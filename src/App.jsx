@@ -33,9 +33,8 @@ let routers = createBrowserRouter([
   {path:'/', element: <RootLayout/>, children:[
     {path:'login', element: <Login/>},
     {path:'register', element: <Register/>},
-    {index:true, element:<Home/>},
-    {index:"home", element:<Home/>},
     {index:"/", element:<Home/>},
+    {index:"home", element:<Home/>},
     {path:'all', element:<All/>},
     {path:'Platforms/browser', element:<Browser/>},
     {path:'Platforms/pc', element:<Pc/>},
