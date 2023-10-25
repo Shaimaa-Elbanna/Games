@@ -29,7 +29,7 @@ export default function Navbar() {
             <span className="navbar-toggler-icon text-white"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            {localStorage.getItem("userToken") ? (
+            {/* {localStorage.getItem("userToken") ? ( */}
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <Link
@@ -167,9 +167,9 @@ export default function Navbar() {
                   </ul>
                 </li>
               </ul>
-            ) : null}
+            {/* ) : null} */}
 
-            {localStorage.getItem("userToken") ? (
+            {/* {localStorage.getItem("userToken") ? ( */}
               <div className="ms-auto">
                 <button
                   className="btn btn-primary text-white"
@@ -178,7 +178,7 @@ export default function Navbar() {
                   Logout
                 </button>
               </div>
-            ) : (
+            {/* ) : ( */}
               <div className="ms-auto">
                 <Link className="text-decoration-none" to={"/login"}>
                   <span className="text-muted fw-bold me-3 mouse-pointer">
@@ -192,7 +192,7 @@ export default function Navbar() {
                   Join Free
                 </Link>
               </div>
-            )}
+            {/* )} */}
           </div>
         </div>
       </nav>

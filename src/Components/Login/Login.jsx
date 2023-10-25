@@ -20,14 +20,14 @@ export default function Login() {
 
   async function sendRegisterDataToAPI() {
     let { data } = await axios.post(
-      "https://route-movies-api.vercel.app/signin",
+      "https://e-commerce-jh7h.onrender.com/auth/login",
       user
     );
     setLoading(false);
-
-    if (data.message === "success") {
+console.log(data);
+    if (data.message === "Done") {
       setError("Login Successful");
-      localStorage.setItem("userToken", data.token);
+      localStorage.setItem("userToken",JSON.stringify( data.refresh_token));
       navigate("/");
     } else {
       setError(data.message);

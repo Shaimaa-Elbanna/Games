@@ -6,11 +6,11 @@ import Loading from "../Loading/Loading";
 
 export default function Register() {
   const [user, setUser] = useState({
-    first_name: "",
-    last_name: "",
+    name: "",
+  
     email: "",
     password: "",
-    age: "",
+    DOB: "",
   });
   const [errList, setErrList] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -26,12 +26,12 @@ export default function Register() {
 
   async function sendRegisterDataToAPI() {
     let { data } = await axios.post(
-      "https://route-movies-api.vercel.app/signup",
+      "https://e-commerce-jh7h.onrender.com/auth/signup",
       user
     );
     setLoading(false);
 
-    if (data.message === "success") {
+    if (data.message === "done") {
       setError("Registeration Successful");
       navigate("/login");
     } else {
@@ -41,9 +41,8 @@ export default function Register() {
 
   function validateRegisterationData() {
     let schema = Joi.object({
-      first_name: Joi.string().min(3).max(30).required(),
-      last_name: Joi.string().min(3).max(30).required(),
-      age: Joi.number().min(10).max(100).required(),
+      name: Joi.string().min(3).max(30).required(),
+      DOB: Joi.number().min(10).max(100).required(),
       email: Joi.string()
         .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
         .required(),
@@ -87,22 +86,22 @@ export default function Register() {
                   onChange={getUserData}
                   type="text"
                   placeholder="First Name"
-                  name="first_name"
+                  name="name"
                   className="p-2 w-100 rounded"
                 />
                 {errList.filter(
-                  (err) => err.context.label == "first_name"
+                  (err) => err.context.label == "name"
                 )[0] ? (
                   <div className="text-danger ">
                     {
                       errList.filter(
-                        (err) => err.context.label == "first_name"
+                        (err) => err.context.label == "name"
                       )[0]?.message
                     }
                   </div>
                 ) : null}
               </div>
-              <div className="w-50 ps-2">
+              {/* <div className="w-50 ps-2">
                 <input
                   onChange={getUserData}
                   type="text"
@@ -121,7 +120,7 @@ export default function Register() {
                     }
                   </div>
                 ) : null}
-              </div>
+              </div> */}
             </div>
 
             <div className="mb-3">
@@ -147,13 +146,13 @@ export default function Register() {
                 onChange={getUserData}
                 type="number"
                 placeholder="Age"
-                name="age"
+                name="DOB"
                 className="d-block w-100 p-2  rounded"
               />
-              {errList.filter((err) => err.context.label == "age")[0] ? (
+              {errList.filter((err) => err.context.label == "DOB")[0] ? (
                 <div className="text-danger ">
                   {
-                    errList.filter((err) => err.context.label == "age")[0]
+                    errList.filter((err) => err.context.label == "DOB")[0]
                       ?.message
                   }
                 </div>
